@@ -1,0 +1,10 @@
+[package]
+name = "injector"
+version = "0.1.0"
+authors = ["Andrey Tkachenko <andreytkachenko64@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+dependencies_macro = {path = "./dependencies_macro"}
+utils = {path = "./utils"}
+lazy_static = "1.1.0"
