@@ -1,0 +1,12 @@
+[package]
+name = "dependencies_macro"
+version = "0.1.0"
+authors = ["Andrey Tkachenko <andreytkachenko64@gmail.com>"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "0.6"
+proc-macro2 = { version = "0.4", features = ["nightly", "proc-macro"] }
+syn = { version = "0.15", features=["full", "extra-traits"]}
