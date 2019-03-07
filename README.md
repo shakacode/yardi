@@ -1,6 +1,6 @@
-# Yet Another Dependency Injector
+# Yet Another Rust Dependency Injector
 
-Very Simple Dependency Injection for Rust
+Very simple dependency injection framework for Rust
 
 # Usage
 Crates has to have `injector.rs`, here example configuration:
@@ -11,7 +11,8 @@ use std::env;
 
 dependencies! {
     consts {
-        POSTGRES_URL: String = env::var("DATABASE_URL")
+        DATABASE_POOLSIZE: usize = 20,
+        DATABASE_URL: String = env::var("DATABASE_URL")
             .unwrap_or("postgres://postgres@127.0.0.1:5432/db_name".to_string()),
     },
 
@@ -28,8 +29,8 @@ dependencies! {
 
         ConnectionPool {
             struct = Arc<db::ConnectionPool<db::adapter::Postgres>>,
-            ctor = |u, l| Arc::new(db::ConnectionPool::new(db::adapter::Postgres::new(u, false), l, 20)),
-            args = [POSTGRES_URL]
+            ctor = |u, p| Arc::new(db::ConnectionPool::new(db::adapter::Postgres::new(u, false), p)),
+            args = [DATABASE_URL, DATABASE_POOLSIZE]
         },
 
         HttpClient {
