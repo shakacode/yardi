@@ -8,7 +8,7 @@ pub use utils::Inject;
 
 #[macro_export]
 macro_rules! inject {
-    ($inj: ident, $dep: path) => {
+    ($inj: expr, $dep: path) => {
         <Injector as Inject<$dep>>::inject(&$inj)
     }
 }
