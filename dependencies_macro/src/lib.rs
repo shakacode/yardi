@@ -424,7 +424,9 @@ pub fn dependencies(input: TokenStream) -> TokenStream {
                 }
 
                 #[derive(Default)]
-                pub struct Injector {
+                pub struct Injector<'self> {
+                    _m: std::marker::PhantomData(&'self u32),
+
                     #inject_fields
                 }
 
