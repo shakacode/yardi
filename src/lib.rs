@@ -1,5 +1,3 @@
-#![feature(proc_macro_hygiene)]
-
 pub extern crate utils;
 
 pub use dependencies_macro::dependencies;
